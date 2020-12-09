@@ -1,0 +1,143 @@
+Database          : BLUDB                  
+Instance          : db2inst1               
+Host name         : 10.120.72.108          
+Authorization Id  : khc12166               
+Run method        : JDBC                   
+Date              : Dec 7, 2020 11:33:09 PM
+Run time (seconds): completed              
+
+DROP TABLE INSTRUCTOR
+
+--1. CREATE THE TABLE INSTRUCTOR
+CREATE TABLE INSTRUCTOR(
+	ins_id INT PRIMARY KEY NOT NULL,
+	lastname VARCHAR(20) NOT NULL,
+	firstname VARCHAR(20) NOT NULL,
+	city VARCHAR(20),
+	country CHAR(2)
+	)
+
+--2A. Insert a single row for Rav Ahuja
+INSERT INTO INSTRUCTOR
+	(ins_id, lastname, firstname, city, country)
+	VALUES
+	(1,'Ahuja','Rav','Toronto','CA')
+
+--2B. Insert the two rows for Raul and Hima	
+INSERT INTO INSTRUCTOR
+	VALUES
+	(2,'Chong','Raul','Toronto','CA'),
+	(3,'Vasudevan','Hima','Chicago','US')
+
+--3. Seelct all rows in a table
+SELECT * FROM INSTRUCTOR
+
+--3.B Select firstname, lastname and country where city is Toronto
+SELECT firstname, lastname, country FROM INSTRUCTOR WHERE CITY='Toronto'
+
+--4. Change the city for Rav to Markham
+UPDATE INSTRUCTOR 
+	SET city ='Markham'
+	WHERE lastname ='Ahuja'
+
+DELETE FROM INSTRUCTOR
+	WHERE firstname = 'Raul'
+
+SELECT * FROM INSTRUCTOR
+
+
+
+=======================================================================================
+DROP TABLE INSTRUCTOR
+
+Run time (seconds): 0.043    
+Status            : succeeded
+
+=======================================================================================
+--1. CREATE THE TABLE INSTRUCTOR
+CREATE TABLE INSTRUCTOR(
+	ins_id INT PRIMARY KEY NOT NULL,
+	lastname VARCHAR(20) NOT NULL,
+	firstname VARCHAR(20) NOT NULL,
+	city VARCHAR(20),
+	country CHAR(2)
+	)
+
+Run time (seconds): 0.137    
+Status            : succeeded
+
+=======================================================================================
+--2A. Insert a single row for Rav Ahuja
+INSERT INTO INSTRUCTOR
+	(ins_id, lastname, firstname, city, country)
+	VALUES
+	(1,'Ahuja','Rav','Toronto','CA')
+
+Run time (seconds): 0.007    
+Status            : succeeded
+
+=======================================================================================
+--2B. Insert the two rows for Raul and Hima	
+INSERT INTO INSTRUCTOR
+	VALUES
+	(2,'Chong','Raul','Toronto','CA'),
+	(3,'Vasudevan','Hima','Chicago','US')
+
+Run time (seconds): 0.004    
+Status            : succeeded
+
+=======================================================================================
+--3. Seelct all rows in a table
+SELECT * FROM INSTRUCTOR
+
+Run time (seconds): 0.004    
+Status            : succeeded
+
+INS_ID LASTNAME  FIRSTNAME CITY    COUNTRY
+------ --------- --------- ------- -------
+     1 Ahuja     Rav       Toronto CA     
+     2 Chong     Raul      Toronto CA     
+     3 Vasudevan Hima      Chicago US     
+
+
+=======================================================================================
+--3.B Select firstname, lastname and country where city is Toronto
+SELECT firstname, lastname, country FROM INSTRUCTOR WHERE CITY='Toronto'
+
+Run time (seconds): 0.006    
+Status            : succeeded
+
+FIRSTNAME LASTNAME COUNTRY
+--------- -------- -------
+Rav       Ahuja    CA     
+Raul      Chong    CA     
+
+
+=======================================================================================
+--4. Change the city for Rav to Markham
+UPDATE INSTRUCTOR 
+	SET city ='Markham'
+	WHERE lastname ='Ahuja'
+
+Run time (seconds): 0.004    
+Status            : succeeded
+
+=======================================================================================
+DELETE FROM INSTRUCTOR
+	WHERE firstname = 'Raul'
+
+Run time (seconds): 0.004    
+Status            : succeeded
+
+=======================================================================================
+SELECT * FROM INSTRUCTOR
+
+Run time (seconds): 0.004    
+Status            : succeeded
+
+INS_ID LASTNAME  FIRSTNAME CITY    COUNTRY
+------ --------- --------- ------- -------
+     1 Ahuja     Rav       Markham CA     
+     3 Vasudevan Hima      Chicago US     
+
+
